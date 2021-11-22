@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Novice's JS Toolkit</title>
+        <meta name="description" content="A set of JavaScript tools you can start using today.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="resources/css/styles.css">
+        <script src="resources/js/script.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <header>
+            <a class="returnButton" href="tutorials.html"><img src="resources/img/chevronLeft.svg" alt="">Tutorials</a>
+        </header>
+        <main>
+            <section>
+                <div class="headLeft">
+                    <h1>Creating slides in JavaScript</h1>
+                    <div class="timeEstimateContainer">
+                        <img class="stopwatchIcon" src="resources/img/stopwatchLight.svg" alt="Image of Stopwatch">
+                        <p>Around 20 Minutes</p>
+                    </div>
+                    <p>
+                        If you haven't already, get started by downloading and unpacking the project files below.<br><br>
+                        Otherwise, just open up your existing project files.
+                    </p>
+                    <a class="downloadButton hrefButton" href="resources/downloads/slides.zip"><img class="downloadButtonIcon" src="resources/img/download.svg" alt="Download Button Icon">Download Project Files</a>
+                </div>
+                <div class="headRight">
+                        <img class="headRightImage" src="resources/img/slides.svg" alt="Image of windows of code.">
+                </div>
+            </section>
+            <section class="tutorialSection">
+                <h2>About the HTML structure</h2>
+                <p>
+                    When creating dynamic content, you should keep in mind that anything you want search engines to be able to access has to be available
+                    in plain HTML. You can certainly store the information about each slide in javascript, however that means it will not be included when it comes to SEO.
+                    That's why when creating slides, you should create each slide individually in HTML such as they are in the project files.
+                </p>
+            </section>
+            <section class="tutorialSection">
+                <h2>Setting up the document</h2>
+                <p>
+                    Right now, every single slide is visible, which is not what we want. Let's start by hiding every single slide by
+                    changing the <b>display:</b> style property to none in the <i>resources/css/styles.css</i> file, like below.
+                </p>
+                <p class="codeSnippet">
+                    .slide {<br>
+                        &emsp;<b>display: none;</b><br>
+                        &emsp;flex-direction: column;<br>
+                        &emsp;justify-content: center;<br>
+                        &emsp;align-items: center;<br>
+                        &emsp;width: 30vw;<br>
+                        &emsp;height: auto;<br>
+                        &emsp;background-color: var(--lightBackgroundMain);<br>
+                    }
+                </p>
+                <p>
+                    Okay, good! But now none of them are visible at all. We need to make one of the slides visible at a time, let's start by doing that to slide 1,
+                    since that makes most sense as the first visible slide.<br><br>
+                    We will accomplish this with in-line styling. While generally you don't want to use this since it is messy and makes it hard to edit later, the reason
+                    we do it like this will be explained later!<br><br>
+                    
+                    Find the first slide, and add <b>style="display: flex"</b> to the section wrapper of it like shown below.
+                </p>
+                <p class="codeSnippet">
+                    &lt;Section class="slide" <b>style="display: flex"</b>><br>
+                    &emsp;&lt;h2>1&lt;/h2><br>
+                    &emsp;&lt;h3>First Slide&lt;/h3><br>
+                    &lt;/Section><br>
+                </p>
+                <p>
+                    Great! Now it looks like how we want it to and we can start working on the functional JavaScript code.
+                </p>
+            </section>
+            <section class="tutorialSection">
+                <h2>Breaking down the problem</h2>
+                <p>
+                    In order to get an understanding of how we're supposed to go about solving the problem (cycle the slides using the buttons),
+                    the best way is to break the problem into pieces we can work on individually.<br><br>
+
+                    In order to cycle a slide, we first need to hide the current slide.<br>
+                    Next we need to show the following side in the list.<br>
+                    We need the <b>previous slide</b> button to cycle a slide backwards<br>
+                    We need the <b>next slide</b> button to cycle a slide forwards<br><br>
+
+                    These are the visible functional elements we need to take care of. Let's make some pseudo code in our <i>resources/js/scripts.js</i>
+                    file so we can work on each part individually.
+                </p>
+                <p class="codeSnippet">
+                    // When a button is pressed, cycle the slide.<br>
+                    // Hide the current slide<br>
+                    // Show the next slide<br>
+                </p>
+                <h2>Building the solution</h2>
+                <p>
+                    Lets work on hiding and showing slides first. If we want to accomplish this, we will first need to give each slide it's own unique ID
+                    so we can target them in JavaScript code.
+
+                    Give each slide section an id like slide1-4 like shown below:
+                </p>
+                <p class="codeSnippet">
+                    &lt;Section <b>ID="slide1"</b> class="slide" style="display: flex"><br>
+                    &emsp;&lt;h2>1&lt;/h2><br>
+                    &emsp;&lt;h3>First Slide&lt;/h3><br>
+                    &lt;/Section><br>
+                    &lt;Section <b>ID="slide2"</b> class="slide"><br>
+                    &emsp;&lt;h2>2&lt;/h2><br>
+                    &emsp;&lt;h3>Second Slide&lt;/h3><br>
+                    &lt;/Section><br>
+                    &lt;Section <b>ID="slide3"</b> class="slide"><br>
+                    &emsp;&lt;h2>3&lt;/h2><br>
+                    &emsp;&lt;h3>Third Slide&lt;/h3><br>
+                    &lt;/Section><br>
+                </p>
+                <p>
+                    Perfect. Now that we can target each slide, let's try hiding the first slide. We can accomplish that using<br>
+                    <b>document.getElementById("ELEMENT ID").style.display = "none";</b>. This Set's the style Display value of an element with a specific ID to none
+                    effectively hiding it, just like we added <b>display: flex</b> to the first slide to show it!
+
+                    Open up the console window and type in <b>document.getElementById("slide1").style.display = "none";</b>. You should see the slide disappear on the page.<br><br>
+
+                    write that bit of code down in the scripts.js file
+                </p>
+                <p class="codeSnippet">
+                    // When a button is pressed, cycle the slide.<br>
+                    // Hide the current slide<br>
+                    document.getElementById("slide1").style.display = "none";<br>
+                    // Show the next slide<br>
+                </p>
+                <p>
+                    Now we can do the same thing to show a slide, all we have to do is change <b>"none"</b> to <b>"flex"</b> try that with slide number 2!<br><br>
+                    Write that bit of code down in your script.js file
+                </p>
+                <p class="codeSnippet">
+                    // When a button is pressed, cycle the slide.<br>
+                    // Hide the current slide<br>
+                    document.getElementById("slide1").style.display = "none";<br>
+                    // Show the next slide<br>
+                    document.getElementById("slide2").style.display = "flex";<br>
+                </p>
+                <p>
+                    Now we need to make a function that can do both of these things all at once. Wrap everything in a function called <b>changeSlide</b>
+                </p>
+                <p class="codeSnippet">
+                    // When a button is pressed, cycle the slide.<br>
+                    function changeSlide() {<br>
+                        &emsp;// Hide the current slide<br>
+                        &emsp;document.getElementById("slide1").style.display = "none";<br>
+                        &emsp;// Show the next slide<br>
+                        &emsp;document.getElementById("slide2").style.display = "flex";<br>
+                    }
+                </p>
+                <p>
+                    Now we need to figure out a way to dynamically find the current slide we're in, so we can use it to change slides back and forward.
+                    this means we need a variable we can change for this, let's call it <b>currentSlide</b><br>
+                    It makes sense to give it a value of 1, since we're always going to be starting on slide no. 1 when we load the page. At the same time, we can
+                    change the code labeled <b>Hide the current slide</b> so it dynamically grabs the correct current slide.
+                </p>
+                <p class="codeSnippet">
+                    <b>let currentSlide = 1;</b><br>
+                    // When a button is pressed, cycle the slide.<br>
+                    function changeSlide() {<br>
+                        &emsp;// Hide the current slide<br>
+                        &emsp;document.getElementById(<b>"slide" + currentSlide</b>).style.display = "none";<br>
+                        &emsp;// Show the next slide<br>
+                        &emsp;document.getElementById("slide2").style.display = "flex";<br>
+                    }
+                </p>
+                <p>
+                    If we want to change to the next slide, we're first going to need to know in which direction we're going. We can pass a value <b>slideDirection</b> to
+                    the function using each button to tell it which way to go. The left button will pass -1 for backwards, and the right button with pass 1 for forwards.<br><br>
+                    Start by adding the new variable to the function like so.
+                </p>
+                <p class="codeSnippet">
+                    let currentSlide = 1;<br>
+                    // When a button is pressed, cycle the slide.<br>
+                    function changeSlide(<b>slideDirection</b>) {<br>
+                        &emsp;// Hide the current slide<br>
+                        &emsp;document.getElementById("slide" + currentSlide).style.display = "none";<br>
+                        &emsp;// Show the next slide<br>
+                        &emsp;document.getElementById("slide2").style.display = "flex";<br>
+                    }
+                </p>
+                <p>
+                    Then add the function to an onclick="" event on the buttons like this.
+                </p>
+                <p class="codeSnippet">
+                    &lt;button <b>onclick="changeSlide(-1)"</b>>Previous Slide&lt;/button>
+                </p>
+                <p>
+                    and
+                </p>
+                <p class="codeSnippet">
+                    &lt;button <b>onclick="changeSlide(1)"</b>>Next slide&lt;/button>
+                </p>
+                <p>
+                    In order to find out which is the next slide, we can use the product of currentSlide and slideDirection. Add this as a new variable called nextSlide in the code, and update the "Show the next slide" code to match.
+                </p>
+                <p class="codeSnippet">
+                    let currentSlide = 1;<br>
+                    // When a button is pressed, cycle the slide.<br>
+                    function changeSlide(slideDirection) {<br>
+                        &emsp;// Find out what the next slide is<br>
+                        &emsp;<b>let nextSlide = currentSlide + slideDirection</b><br>
+                        &emsp;// Hide the current slide<br>
+                        &emsp;document.getElementById("slide" + currentSlide).style.display = "none";<br>
+                        &emsp;// Show the next slide<br>
+                        &emsp;document.getElementById(<b>"slide" + nextSlide</b>).style.display = "flex";<br>
+                    }
+                </p>
+                <p>
+                    We also need to update the currentSlide variable so it matches with the new slide, we can do that by just setting currentSlide to be equal nextSlide at the end of the function.
+                </p>
+                <p class="codeSnippet">
+                    let currentSlide = 1;<br>
+                    // When a button is pressed, cycle the slide.<br>
+                    function changeSlide(slideDirection) {<br>
+                        &emsp;// Find out what the next slide is<br>
+                        &emsp;let nextSlide = currentSlide + slideDirection<br>
+                        &emsp;// Hide the current slide<br>
+                        &emsp;document.getElementById("slide" + currentSlide).style.display = "none";<br>
+                        &emsp;// Show the next slide<br>
+                        &emsp;document.getElementById("slide" + nextSlide).style.display = "flex";<br>
+                        &emsp;// Set the current slide to be the same as the nextSlide variable, so it's updated for the next run.<br>
+                        &emsp;<b>currentSlide = nextSlide</b><br>
+                    }
+                </p>
+                <p>
+                    Go try it out!
+                </p>
+                <p>
+                    You may notice there's a problem. We can go past the number of slides available. We need to create a way to make the slides wrap around to the start / end depending on where we are.
+                    We can do this by checking if the next slide is a higher number than the amount of available slides, or if it is below the first slide. In order to do that we need to tell the script how many slides
+                    we have in total. make a new constant called slideCount and add it to the start of the script. We have 3 slides so set it's value to 3.
+                </p>
+                <p class="codeSnippet">
+                    const slideCount = 3;
+                </p>
+                <p>
+                    Then, using an if statement, we can check if the amount of slides is lower than the next slide. In other words we can check if we're trying to go above the amount of available slides.
+                    if that turns out to be true, we can tell it to wrap around to the first slide instead by setting nextSlide to 1.
+                    On the other side we can check if thenext slide is less than or equal to 0, which is below the first slide. if so we set nextSlide to the last slide, effectively wrapping it around the other way.
+                </p>
+                <p class="codeSnippet">
+                    if (nextSlide > slideCount) {<br>
+                        &emsp;nextSlide = 1<br>
+                    }<br>
+                    else if (nextSlide &lt;= 0) {<br>
+                        &emsp;nextSlide = slideCount<br>
+                    }<br>
+                </p>
+                <p>Then we add this check right before the piece of code that shows the next slide, and we're done! Here's how the final script looks for reference:</p>
+                <p class="codeSnippet">
+                    const slideCount = 3;
+                    let currentSlide = 1;<br>
+                    // When a button is pressed, cycle the slide.<br>
+                    function changeSlide(slideDirection) {<br>
+                        &emsp;// Find out what the next slide is<br>
+                        &emsp;let nextSlide = currentSlide + slideDirection<br>
+                        &emsp;// Hide the current slide<br>
+                        &emsp;document.getElementById("slide" + currentSlide).style.display = "none";<br><b>
+                        &emsp;if (nextSlide > slideCount) {<br>
+                                &emsp;&emsp;nextSlide = 1<br>
+                        &emsp;}<br>
+                        &emsp;else if (nextSlide &lt;= 0) {<br>
+                                &emsp;&emsp;nextSlide = slideCount<br>
+                        &emsp;}<br></b>
+                        &emsp;// Show the next slide<br>
+                        &emsp;document.getElementById("slide" + nextSlide).style.display = "flex";<br>
+                        &emsp;// Set the current slide to be the same as the nextSlide variable, so it's updated for the next run.<br>
+                        &emsp;currentSlide = nextSlide<br>
+                    }
+                </p>
+                <p>
+                    Save your files for later. They can be used for the other tutorials on the website for the sake of convenience :)
+                </p>
+            </section>
+        </main>
+        <footer>
+            <p class="byLine">By Esben LH 2021</p><p class="footerSpacer">-</p><a class="creditsHref" href="credits.html">Credits</a>
+        </footer>
+    </body>
+</html>

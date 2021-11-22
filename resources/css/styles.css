@@ -1,0 +1,273 @@
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
+
+/* Color Variable Definitions */
+:root {
+	/* Light Mode Colors */
+	--lightPrimaryColor: #121116;
+	--lightSecondaryColor: #49484E;
+	--lightTertiaryColor: #626165;
+	--accentingColor: #5A49D5;
+	--accentingColorLight: #a095f5;
+	--lightBackgroundMain: White;
+	--lightBackgroundSecond: #FBFBFB;
+	--lightButtonText: white;
+	/* Dark Mode Colors */
+	--lightPrimaryColor: #121116;
+	--lightSecondaryColor: #49484E;
+	--lightTertiaryColor: #626165;
+	--accentingColor: #5A49D5;
+	--lightBackgroundMain: White;
+	--lightBackgroundSecond: #FBFBFB;
+	--lightButtonText: white;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--lightBackgroundSecond);
+	min-height: 100vh;
+	margin: 0;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width:calc(75vw - 16vw);
+	min-height: 75vh;
+	background-color: var(--lightBackgroundMain);
+	padding: 3vw 8vw 3vw 8vw;
+}
+
+* {
+	font-size: 100%;
+	font-family: Karla;
+   }
+
+h1 {
+	color: var(--accentingColor);
+	font-size: 30pt;
+}
+h2 {
+	color: var(--lightPrimaryColor);
+	font-size: 20pt;
+}
+p {
+	color: var(--lightSecondaryColor);
+	font-size: 14pt;
+}
+
+.hrefButton {
+	display: inline-block;
+	font-size: 14pt;
+	font-weight: 300;
+	border: none;
+	border-radius: 8px;
+	background-color: var(--accentingColor);
+	color: var(--lightButtonText);
+	padding: 8px 20px 8px 20px;
+	margin-block-start: 1em;
+    margin-block-end: 1em;
+	width: fit-content;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+section {
+	display: flex;
+	width: 100%;
+}
+
+.headLeft {
+	display: flex;
+	flex-direction: column;
+	width: 55%;
+}
+
+.headRight {
+	display: flex;
+	width: 45%;
+	justify-content: right;
+	align-items: center;
+}
+
+.headRightImage {
+	width: 80%;
+	height: 80%;
+	color: var(--accentingColor)
+}
+
+.headLeftTutorials {
+	display: flex;
+	justify-content: center;
+	width: 45%;
+}
+
+.headRightTutorials {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 55%;
+}
+
+.timeEstimateContainer {
+	display: Flex;
+	align-items: center;
+}
+
+.timeEstimateContainer >p {
+	color: var(--lightTertiaryColor);
+	margin: 0;
+}
+
+.stopwatchIcon{
+	height: 14pt;
+	width: auto;
+	margin-right: 8px;
+}
+
+.headLeftContent {
+	display: none;
+}
+
+.titleandProgress {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.progressDot {
+	border: none;
+	width: 12px;
+	height: 12px;
+	border-radius: 100%;
+	background-color: var(--lightTertiaryColor);
+	margin: 2.5px;
+	cursor: pointer;
+}
+
+.slideTitle {
+	display: none;
+	margin: 0.35em 0em 0.35em 0em;
+}
+
+.chevron {
+	width: 1em;
+	height: auto;
+	cursor: pointer;
+}
+
+.chevronRight {
+	transform: rotate(180deg);
+}
+
+.slideImage {
+	display: none;
+	height: 80%;
+	width: auto;
+}
+
+.slideImageWrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	width: 100%;
+	height: 300px;
+}
+
+.slidesandButtons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 80%;
+}
+
+.imageTitleandProgress {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin: 0px 10px 0px 10px;
+}
+
+header {
+	display: flex;
+	align-items: flex-end;
+	height: 8vh;
+	width: 75vw;
+}
+
+footer {
+	display: flex;
+	align-items: center;
+	height: 8vh;
+}
+
+.byLine {
+	padding-right: 5px;
+}
+
+.creditsHref {
+	text-decoration: none;
+	font-size: 14pt;
+}
+
+.footerSpacer {
+	padding-right: 5px;
+}
+
+.returnButton {
+	display: flex;
+	align-items: center;
+	margin: 4px;
+	width: auto;
+	text-decoration: none;
+	color: var(--lightTertiaryColor)
+}
+
+.returnButton > img {
+	width: auto;
+	height: 1em;
+	margin-right: 5px;
+}
+
+.downloadButton {
+	display: flex;
+	align-items: center;
+}
+
+.downloadButtonIcon {
+		height: 1.5em;
+		width: auto;
+		margin-right: 1em;
+}
+
+.tutorialSection {
+	flex-direction: column;
+}
+
+.codeSnippet {
+	padding: 8px;
+	border-radius: 2px;
+	border: 2px solid var(--lightSecondaryColor);
+	background-color: var(--lightTertiaryColor);
+	color: #e2e1e6;
+}
+
+.buttonDeactivated {
+	background-color: var(--lightTertiaryColor);
+}
+
+b {
+	color: var(--accentingColor)
+}
+
+p.codeSnippet > b {
+	color: var(--accentingColorLight)
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Novice's JS Toolkit</title>
+        <meta name="description" content="A set of JavaScript tools you can start using today.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="resources/css/styles.css">
+        <script src="resources/js/script.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <header>
+            <a class="returnButton" href="index.html"><img src="resources/img/chevronLeft.svg" alt="">Front Page</a>
+        </header>
+        <main>
+            <section>
+                <div class="headLeft headLeftTutorials">
+                    <!--Why position slide content like this in HTML and not dynamically change it in JavaScript? Because this way the information is accessible to search engines.-->
+                    <div id="slideLeft1" class="headLeftContent" style="display: block;"> <!--Setting to display block for consistency with how JavaScript applies-->
+                        <h1>Creating slides in JavaScript</h1>
+                        <div class="timeEstimateContainer">
+                            <img class="stopwatchIcon" src="resources/img/stopwatchLight.svg" alt="Image of Stopwatch">
+                            <p>Around 20 Minutes</p>
+                        </div>
+                        <p>
+                            Maybe you need to make a carousel showing products on a webshop.
+                            Or maybe you need to create a powerpoint-like presentation for an
+                            informative website? JavaScript has you covered!<br><br>
+
+                            Learn how to create dynamic slides that are easily expandable, much like the ones you're looking at right now!
+                        </p>
+                        <a class="hrefButton" href="tutorialsSlides.html">Let's do it!</a>
+                    </div>
+                    <div id="slideLeft2" class="headLeftContent">
+                        <h1>Dynamic Date</h1>
+                        <div class="timeEstimateContainer">
+                            <img class="stopwatchIcon" src="resources/img/stopwatchLight.svg" alt="Image of Stopwatch">
+                            <p>Around 15 Minutes</p>
+                        </div>
+                        <p>
+                            Learn how to create a simple JavaScript self-updating date.<br>
+                            Perfect for your website's footer!
+                        </p>
+                        <a class="hrefButton buttonDeactivated" href="">Coming Soon</a>
+                    </div>
+                    <div id="slideLeft3" class="headLeftContent">
+                        <h1>Floating & Responsive Navigation</h1>
+                        <div class="timeEstimateContainer">
+                            <img class="stopwatchIcon" src="resources/img/stopwatchLight.svg" alt="Image of Stopwatch">
+                            <p>Around 20 Minutes</p>
+                        </div>
+                        <p>
+                            Learn how to make your navigation bar follow when you scroll, while at the
+                            same time adjusting it to be less intrusive to the browsing experience on your
+                            websites. 
+                        </p>
+                        <a class="hrefButton buttonDeactivated" href="">Coming Soon</a>
+                    </div>
+                    <div id="slideLeft4" class="headLeftContent">
+                        <h1>Dark Mode</h1>
+                        <div class="timeEstimateContainer">
+                            <img class="stopwatchIcon" src="resources/img/stopwatchLight.svg" alt="Image of Stopwatch">
+                            <p>Around 15 Minutes</p>
+                        </div>
+                        <p>
+                            Make use of JavaScript and CSS Variables to create a dark-mode toggle
+                            for your webpage!
+                        </p>
+                        <a class="hrefButton buttonDeactivated" href="">Coming Soon</a>
+                    </div>
+                </div>
+                <div class="headRight headRightTutorials">
+                        <div class="slidesandButtons">
+                            <a onclick="changeSlide(-1)"><img class="chevron" src="resources/img/chevronLeft.svg" alt="Slide Left"></a>
+                            <div class="imageTitleandProgress">
+                                <div class="slideImageWrapper">
+                                    <img id="slideImage1" class="slideImage" src="resources/img/slides.svg" alt="Image of Slideshow" style="display: block;">
+                                    <img id="slideImage2" class="slideImage" src="resources/img/dynamicDate.svg" alt="Image of Calendar">
+                                    <img id="slideImage3" class="slideImage" src="resources/img/floatingNav.svg" alt="Image of navigation bar in browser window">
+                                    <img id="slideImage4" class="slideImage" src="resources/img/darkMode.svg" alt="Image of moon">
+                                </div>
+                                <div class="titleandProgress">
+                                    <p id="slideTitle1" class="slideTitle" style="display: block;">Creating slides in JavaScript</p>
+                                    <p id="slideTitle2" class="slideTitle">Dynamic Date</p>
+                                    <p id="slideTitle3" class="slideTitle">Floating & Responsive Navigation</p>
+                                    <p id="slideTitle4" class="slideTitle">Dark Mode</p>
+                                    <div class="slideProgress">
+                                        <button id="progressDot1" class="progressDot" onclick="setSlide(1)" style="background-color: var(--accentingColor);"></button><button id="progressDot2" class="progressDot" onclick="setSlide(2)"></button><button id="progressDot3" class="progressDot" onclick="setSlide(3)"></button><button id="progressDot4" class="progressDot" onclick="setSlide(4)"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <a onclick="changeSlide(1)"><img class="chevron" src="resources/img/chevronRight.svg" alt="Slide Right"></a>
+                        </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p class="byLine">By Esben LH 2021</p><p class="footerSpacer">-</p><a class="creditsHref" href="credits.html">Credits</a>
+        </footer>
+    </body>
+</html>
